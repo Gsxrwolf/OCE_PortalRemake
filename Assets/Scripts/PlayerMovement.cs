@@ -2,32 +2,82 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody m_rB;
-    [SerializeField] private float m_moveSpeed = 1.0f;
-    [SerializeField] private Vector2 m_rotation;
+    GameObject cam;
+    Rigidbody rb;
 
-    // Start is called before the first frame update
+    [SerializeField] float sprintSpeedToAdd = 5;
+    [SerializeField] float speed = 10;
+
+
+    [SerializeField] float sprintTime = 10;
+    [SerializeField] float sprintTimeIncrease = 1;
+    [SerializeField] float sprintTimeDecrease = 2;
+    float curSprintTime;
+    bool onCooldown = false;
+
+    [SerializeField] float sensiX = 0.1f;
+    [SerializeField] float sensiY = 0.1f;
+    [SerializeField] int clampValue = 225;
+
+
+    Vector2 moveInput;
+    Vector3 direction;
+    Vector2 mouseInput;
+    Vector3 rotationVecPlayer;
+    Vector3 rotationVecCam;
+    float sprintInput;
+
     void Start()
     {
-        m_rB = transform.GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        cam = gameObject.transform.GetChild(0).gameObject;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0f, m_rotation.x, 0f);
+        if (curSprintTime < sprintTime && sprintInput == 1 && !onCooldown)
+        {
+            curSprintTime += sprintTimeIncrease * Time.deltaTime;
+        }
+        else
+        {
+            onCooldown = true;
+            sprintInput = 0;
+            curSprintTime -= sprintTimeDecrease * Time.deltaTime;
+        }
+
+        if (curSprintTime < 0)
+        {
+            curSprintTime = 0;
+            onCooldown = false;
+        }
+
+
+        direction = moveInput.x * transform.right + moveInput.y * transform.forward;
+        rb.AddForce(direction * (speed + (sprintSpeedToAdd * sprintInput)) * Time.deltaTime * 100);
+        transform.rotation = Quaternion.Euler(rotationVecPlayer * sensiX);
+        cam.transform.rotation = Quaternion.Euler(new Vector3(rotationVecCam.x, rotationVecPlayer.y, 0) * sensiY);
     }
 
-    public void Movement(InputAction.CallbackContext _context)
+    public void OnMoveInput(InputAction.CallbackContext _input)
     {
-
+            moveInput = _input.ReadValue<Vector2>();
+    }
+    public void OnSprintInput(InputAction.CallbackContext _input)
+    {
+            sprintInput = _input.ReadValue<float>();
     }
 
-    public void PlayerRotation(InputAction.CallbackContext _context)
+    public void OnMouseInput(InputAction.CallbackContext _input)
     {
-        m_rotation += _context.ReadValue<Vector2>();
+            mouseInput = _input.ReadValue<Vector2>();
+            rotationVecCam.x -= mouseInput.y;
+            rotationVecCam.x = Mathf.Clamp(rotationVecCam.x, -clampValue, clampValue);
+            rotationVecPlayer.y += mouseInput.x;
     }
 }

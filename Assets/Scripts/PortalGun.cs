@@ -10,18 +10,7 @@ public class PortalGun : MonoBehaviour
     [SerializeField] private GameObject m_bluePortal;
     [SerializeField] private GameObject m_orangePortal;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    private GameObject m_lastPortal;
 
     public void OnMouseClick(InputAction.CallbackContext _context)
     {
@@ -45,6 +34,8 @@ public class PortalGun : MonoBehaviour
     {
         RaycastHit hit;
 
+        m_lastPortal = _gO;
+
         _gO.GetComponent<Portal>().lastPos = _gO.transform.position;
         _gO.GetComponent<Portal>().lastRot = _gO.transform.rotation;
 
@@ -55,7 +46,7 @@ public class PortalGun : MonoBehaviour
 
             if (!CheckValidPosition(_gO))
             {
-                _gO.GetComponent<Portal>().ResetPortal();
+                ResetPortal(_gO);
             }
         }
 
@@ -88,10 +79,14 @@ public class PortalGun : MonoBehaviour
         {
             return false;
         }
-
-
-
         return true;
     }
-
+    public void ResetPortal(GameObject _portal)
+    {
+        if (_portal == m_lastPortal)
+        {
+            _portal.transform.position = _portal.GetComponent<Portal>().lastPos;
+            _portal.transform.rotation = _portal.GetComponent<Portal>().lastRot;
+        }
+    }
 }
