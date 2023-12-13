@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 474445924}
   - component: {fileID: 474445922}
   m_Layer: 0
-  m_Name: PortalCam1
+  m_Name: PortalCamB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,8 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 568143703}
-  portalO: {fileID: 8387854984880939757}
-  portalB: {fileID: 8387854985433008006}
+  portalRotation: {fileID: 8387854985433008006}
+  portalOutput: {fileID: 8387854984880939757}
 --- !u!20 &474445924
 Camera:
   m_ObjectHideFlags: 0
@@ -388,12 +388,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474445921}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.9961947, z: -0, w: -0.08715578}
-  m_LocalPosition: {x: 1.64, y: 1, z: 8.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 3378006869493373542}
   m_LocalEulerAnglesHint: {x: 0, y: 190, z: 0}
 --- !u!1 &568143703
 GameObject:
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 568143709}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,8 +756,9 @@ GameObject:
   m_Component:
   - component: {fileID: 802067636}
   - component: {fileID: 802067635}
+  - component: {fileID: 802067637}
   m_Layer: 0
-  m_Name: PortalCam2
+  m_Name: PortalCamO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,13 +823,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802067633}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.9961947, z: -0, w: -0.08715578}
-  m_LocalPosition: {x: -1.63, y: 1, z: 8.76}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 3378006869000027917}
   m_LocalEulerAnglesHint: {x: 0, y: 190, z: 0}
+--- !u!114 &802067637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802067633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e418c8edbc0b04283b37376e7d690f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 568143703}
+  portalRotation: {fileID: 8387854984880939757}
+  portalOutput: {fileID: 8387854985433008006}
 --- !u!1 &905216942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,55 +1296,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659740213}
   m_CullTransparentMesh: 1
---- !u!1 &1843603587
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1843603589}
-  - component: {fileID: 1843603588}
-  m_Layer: 0
-  m_Name: CamManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1843603588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843603587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5d723b662da0fa4e82b70d1f5bd10f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 568143703}
-  portalO: {fileID: 8387854984880939757}
-  portalB: {fileID: 8387854985433008006}
-  cam1: {fileID: 0}
-  cam2: {fileID: 0}
---- !u!4 &1843603589
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843603587}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895301724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1531,8 @@ Transform:
   m_LocalPosition: {x: -2.69, y: 1, z: 3.98}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 802067636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
 --- !u!4 &3378006869493373542
@@ -1579,7 +1547,8 @@ Transform:
   m_LocalPosition: {x: 0.88, y: 1, z: 3.31}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 474445925}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
 --- !u!64 &8319453904151211309
@@ -1637,10 +1606,13 @@ GameObject:
   - component: {fileID: 3378006869000027917}
   - component: {fileID: 9005758611707392553}
   - component: {fileID: 2822712224135668191}
+  - component: {fileID: 9005758611707392556}
   - component: {fileID: 8319453904151211309}
   - component: {fileID: 9005758611707392555}
   - component: {fileID: 9005758611707392554}
-  - component: {fileID: 9005758611707392556}
+  - component: {fileID: 9005758611707392559}
+  - component: {fileID: 9005758611707392558}
+  - component: {fileID: 9005758611707392557}
   m_Layer: 6
   m_Name: Portal Orange
   m_TagString: Portal
@@ -1659,10 +1631,13 @@ GameObject:
   - component: {fileID: 3378006869493373542}
   - component: {fileID: 9005758611121755970}
   - component: {fileID: 2822712223580439732}
+  - component: {fileID: 9005758611121755973}
   - component: {fileID: 8319453904672868422}
   - component: {fileID: 9005758611121755972}
   - component: {fileID: 9005758611121755971}
-  - component: {fileID: 9005758611121755973}
+  - component: {fileID: 9005758611121755976}
+  - component: {fileID: 9005758611121755975}
+  - component: {fileID: 9005758611121755974}
   m_Layer: 6
   m_Name: Portal Blue
   m_TagString: Portal
@@ -1692,6 +1667,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastPos: {x: 0, y: 0, z: 0}
   lastRot: {x: 0, y: 0, z: 0, w: 0}
+  leftCollider: {fileID: 9005758611121755974}
+  topCollider: {fileID: 9005758611121755975}
+  rightCollider: {fileID: 9005758611121755976}
   resetPortal:
     m_PersistentCalls:
       m_Calls:
@@ -1755,6 +1733,69 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &9005758611121755974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387854985433008006}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: -0.5, y: 0, z: 0}
+--- !u!65 &9005758611121755975
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387854985433008006}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.05, z: 0.1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!65 &9005758611121755976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387854985433008006}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0.5, y: 0, z: 0}
 --- !u!33 &9005758611707392553
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1777,6 +1818,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastPos: {x: 0, y: 0, z: 0}
   lastRot: {x: 0, y: 0, z: 0, w: 0}
+  leftCollider: {fileID: 9005758611707392559}
+  topCollider: {fileID: 9005758611707392558}
+  rightCollider: {fileID: 9005758611707392557}
   resetPortal:
     m_PersistentCalls:
       m_Calls:
@@ -1840,6 +1884,69 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &9005758611707392557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387854984880939757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: -0.5, y: 0, z: 0}
+--- !u!65 &9005758611707392558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387854984880939757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.05, z: 0.1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!65 &9005758611707392559
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387854984880939757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0.5, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1851,6 +1958,3 @@ SceneRoots:
   - {fileID: 1266335075}
   - {fileID: 298193290}
   - {fileID: 1895301725}
-  - {fileID: 474445925}
-  - {fileID: 802067636}
-  - {fileID: 1843603589}
