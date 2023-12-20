@@ -14,10 +14,6 @@ public class PortalGun : MonoBehaviour
 
     public void OnMouseClick(InputAction.CallbackContext _context)
     {
-        if (!_context.performed)
-        {
-            return;
-        }
 
         if (_context.control.name == "leftButton")
         {
